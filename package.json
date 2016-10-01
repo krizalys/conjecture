@@ -1,0 +1,56 @@
+{
+  "name": "conjecture",
+  "version": "1.0.0-alpha.1",
+  "description": "Krizalys' conjecture library.",
+  "license": "BSD-3-Clause",
+  "homepage": "http://www.krizalys.com/",
+  "typings": "lib/conjecture.d.ts",
+  "keywords": [
+    "krizalys",
+    "conjecture",
+    "node.js",
+    "testing",
+    "assertion"
+  ],
+  "author": {
+    "name": "Christophe Vidal",
+    "email": "support@krizalys.com",
+    "url": "http://www.krizalys.com/"
+  },
+  "engines": {
+    "node": ">= 6.0",
+    "npm": ">= 3.0"
+  },
+  "dependencies": {
+    "@types/node": "6.0.45",
+    "ajv": "4.8.2"
+  },
+  "devDependencies": {
+    "@types/chai": "3.4.33",
+    "@types/mocha": "2.2.32",
+    "@types/sinon-chai": "2.7.27",
+    "chai": "3.5.0",
+    "istanbul": "0.4.5",
+    "mocha": "3.0.2",
+    "remap-istanbul": "0.6.4",
+    "sinon": "1.17.6",
+    "sinon-chai": "2.8.0",
+    "tslint": "3.15.1",
+    "typescript": "2.0.3"
+  },
+  "scripts": {
+    "build": "tsc",
+    "coverage": "npm run coverage:html",
+    "coverage:html": "npm run build && istanbul cover --include-all-sources _mocha -- 'build/test/unit/**/*Test.js' && remap-istanbul --input coverage/coverage.json --output coverage/html-report --type html",
+    "coverage:lcov": "npm run build && istanbul cover --include-all-sources _mocha -- 'build/test/unit/**/*Test.js' && remap-istanbul --input coverage/coverage.json --output coverage/lcov.info --type lcovonly",
+    "lint": "tslint 'lib/**/*.ts' 'test/**/*.ts'",
+    "test": "npm run test:u && npm run test:i",
+    "test:u": "npm run build && mocha 'build/test/unit/**/*Test.js'",
+    "test:i": "npm run build && mocha 'build/test/integration/**/*Test.js'",
+    "istanbul": "istanbul",
+    "mocha": "mocha",
+    "remap-istanbul": "remap-istanbul",
+    "tsc": "tsc",
+    "tslint": "tslint"
+  }
+}

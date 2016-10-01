@@ -1,0 +1,8 @@
+language: node_js
+
+node_js:
+    - '6.0'
+
+before_install: npm install -g codeclimate-test-reporter && npm install
+script:         npm run coverage:lcov
+after_script:   bash <(curl --silent https://codecov.io/bash) && CODECLIMATE_REPO_TOKEN=0b2b77a1aea43acdad27ab92428aeb549c6b35f0a77e744bedc21f7656312163 codeclimate-test-reporter < coverage/lcov.info
